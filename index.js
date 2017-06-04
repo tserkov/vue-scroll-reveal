@@ -4,7 +4,7 @@ const VueScrollReveal = {
   install(Vue) {
     Vue.directive('scroll-reveal', {
       inserted: (el, binding) => {
-        const options = binding.arg || {};
+        const options = binding.value || {};
 
         if (binding.modifiers) {
           if (binding.modifiers.reset) {
