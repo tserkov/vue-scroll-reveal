@@ -19,6 +19,21 @@ const VueScrollReveal = {
         sr.reveal(el, options);
       },
     });
+
+    const $sr = {
+      isSupported() {
+        return sr.isSupported();
+      },
+      sync() {
+        sr.sync();
+      },
+    };
+
+    Object.defineProperty(Vue.prototype, '$sr', {
+      get() {
+        return $sr;
+      },
+    });
   },
 };
 

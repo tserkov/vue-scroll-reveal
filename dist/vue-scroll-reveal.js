@@ -24,6 +24,21 @@ var VueScrollReveal = {
         sr.reveal(el, options);
       }
     });
+
+    var $sr = {
+      isSupported: function isSupported() {
+        return sr.isSupported();
+      },
+      sync: function sync() {
+        sr.sync();
+      }
+    };
+
+    Object.defineProperty(Vue.prototype, '$sr', {
+      get: function get() {
+        return $sr;
+      }
+    });
   }
 };
 
