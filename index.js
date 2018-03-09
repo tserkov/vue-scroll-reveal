@@ -1,7 +1,7 @@
 const sr = require('scrollreveal')();
 
-function generateOptions(bindingValue, bindingModifiers) {
-  const options = bindingValue || {};
+function generateOptions(defaultOptions, bindingValue, bindingModifiers) {
+  const options = Object.assign({}, defaultOptions, bindingValue);
 
   if (bindingModifiers) {
     if (bindingModifiers.reset) {
@@ -17,16 +17,16 @@ function generateOptions(bindingValue, bindingModifiers) {
 }
 
 const VueScrollReveal = {
-  install(Vue) {
+  install(Vue, defaultOptions) {
     Vue.directive('scroll-reveal', {
       inserted: (el, binding) => {
-        const options = generateOptions(binding.value);
+        const options = generateOptions(defaultOptions, binding.value, binding.modifiers);
 
         sr.reveal(el, options);
       },
       update: (el, binding) => {
         if (binding.value != binding.oldValue) {
-          const options = generateOptions(binding.value, binding.modifiers);
+          const options = generateOptions(defaultOptions, binding.value, binding.modifiers);
 
           sr.reveal(el, options);
         }
