@@ -44,6 +44,11 @@ var VueScrollReveal = {
       },
       sync: function sync() {
         sr.sync();
+      },
+      reveal: function reveal(target, config, interval, sync) {
+        var options = generateOptions(defaultOptions, config);
+
+        sr.reveal(target, config, interval, sync);
       }
     };
 

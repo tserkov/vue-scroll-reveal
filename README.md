@@ -64,6 +64,9 @@ Vue.use(VueScrollReveal, {
 
 As of 1.0.4, the `isSupported()` and `sync()` are now exposed via `Vue.$sr` or `this.$sr`.
 
+As of 1.0.7, the `reveal(target, config, interval, sync)` is exposed via `Vue.$sr` or `this.$sr`, though using the directive
+is preferred in order to keep with Vue principles.
+
 ## Nuxt
 
 If using as a plugin with [Nuxt](https://github.com/nuxt/nuxt.js) be sure to disable server side rendering in `nuxt.config.js`.

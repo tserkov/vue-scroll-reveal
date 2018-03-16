@@ -40,6 +40,11 @@ const VueScrollReveal = {
       sync() {
         sr.sync();
       },
+      reveal(target, config, interval, sync) {
+        const options = generateOptions(defaultOptions, config);
+
+        sr.reveal(target, config, interval, sync);
+      },
     };
 
     Object.defineProperty(Vue.prototype, '$sr', {
