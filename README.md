@@ -31,6 +31,13 @@ Vue.use(VueScrollReveal, {
   distance: '10px',
   mobile: false
 });
+
+// A class can be added to all elements that are affected by vue-scroll-reveal
+Vue.use(VueScrollReveal, {
+  class: 'v-scroll-reveal',
+  duration: 800,
+  ...
+});
 ```
 
 ```html
