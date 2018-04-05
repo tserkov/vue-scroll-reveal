@@ -27,7 +27,7 @@ var VueScrollReveal = {
       inserted: function inserted(el, binding) {
         var options = generateOptions(defaultOptions, binding.value, binding.modifiers);
 
-        if (typeof options.class == "string") {
+        if (typeof options.class === 'string') {
           el.classList.add(options.class);
           delete options.class;
         }
