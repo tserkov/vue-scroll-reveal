@@ -17,14 +17,16 @@ yarn add vue-scroll-reveal
 ```
 
 ## Use
+Remember! Any of the [ScrollReveal options](https://github.com/jlmakes/scrollreveal#22-the-starting-defaults) can be used!
 
 ```javascript
 // In main.js
 import VueScrollReveal from 'vue-scroll-reveal';
 
+// Using ScrollReveal's default configuration
 Vue.use(VueScrollReveal);
 
-// You can also pass in default options
+// OR specifying custom default options for all uses of the directive
 Vue.use(VueScrollReveal, {
   class: 'v-scroll-reveal', // A CSS class applied to elements with the v-scroll-reveal directive; useful for animation overrides.
   duration: 800,
@@ -43,11 +45,13 @@ Vue.use(VueScrollReveal, {
       <h1>Scroll down!</h1>
     </section>
 
+    <!-- This section will reveal itself each time it's scrolled into view -->
     <section v-scroll-reveal.reset>
       <h1>Tada!</h1>
     </section>
 
-    <section v-scroll-reveal.reset={ delay: 250 }>
+    <!-- Element-specific configuration options can be passed like this -->
+    <section v-scroll-reveal.reset="{ delay: 250 }">
       <h1>Slightly late tada!</h1>
     </section>
 
