@@ -33,7 +33,7 @@ Vue.use(VueScrollReveal, {
   mobile: false
 });
 ```
-
+Please note that any options from the [ScrollReveal library](https://github.com/jlmakes/scrollreveal) can be passed in here.
 ```html
 <!-- In a component -->
 <template>
@@ -47,6 +47,7 @@ Vue.use(VueScrollReveal, {
       <h1>Tada!</h1>
     </section>
 
+    <!-- See below how options can be passed on a per-element basis -->
     <section v-scroll-reveal.reset={ delay: 250 }>
       <h1>Slightly late tada!</h1>
     </section>
