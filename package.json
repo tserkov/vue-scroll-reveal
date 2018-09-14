@@ -1,6 +1,6 @@
 {
   "name": "vue-scroll-reveal",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "A Vue directive to wrap @jlmake's excellent ScrollReveal library.",
   "keywords": [
     "vue",
@@ -15,13 +15,16 @@
   },
   "repository": "https://github.com/tserkov/vue-scroll-reveal",
   "author": "tserkov <james.churchard@gmail.com>",
-  "contributors": ["J Garcia (https://github.com/JGJP)"],
+  "contributors": [
+    "J Garcia (https://github.com/JGJP)",
+    "Hilmar (https://github.com/hilmarp)"
+  ],
   "license": "MIT",
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-preset-es2015": "^6.24.1"
   },
   "dependencies": {
-    "scrollreveal": "^3.3.6"
+    "scrollreveal": "^4.0.2"
   }
 }
