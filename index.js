@@ -11,6 +11,10 @@ function generateOptions(defaultOptions, bindingValue, bindingModifiers) {
     if (bindingModifiers.nomobile) {
       options.mobile = false;
     }
+
+    if (bindingModifiers.nodesktop) {
+      options.desktop = false;
+    }
   }
 
   return options;
