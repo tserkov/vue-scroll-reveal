@@ -1,7 +1,7 @@
 # vue-scroll-reveal [![license](https://img.shields.io/github/license/tserkov/vue-scroll-reveal.svg)]()
 A Vue directive to wrap [@jlmake](https://github.com/jlmakes)'s excellent [ScrollReveal](https://github.com/jlmakes/scrollreveal) library.
 
-The directive exposes `reset` and `nomobile` as modifiers (ie. `v-scroll-reveal.reset.nomobile`).  
+The directive exposes `reset`, `nodesktop`, and `nomobile` as modifiers (ie. `v-scroll-reveal.reset.nomobile`).
 All other options can be passed to `Vue.use` or to individual elements as a value (ie. `v-scroll-reveal={ delay: 250 }`).
 
 ## Install
@@ -67,14 +67,14 @@ Vue.use(VueScrollReveal, {
 
 ## Methods
 
-As of 1.0.4, the `isSupported()` and `sync()` are now exposed via `Vue.$sr` or `this.$sr`.
+As of 1.0.4, the `isSupported()` and `sync()` methods are exposed via `Vue.$sr` or `this.$sr`.
 
 As of 1.0.7, the `reveal(target, config, interval, sync)` is exposed via `Vue.$sr` or `this.$sr`, though using the directive
 is preferred in order to keep with Vue principles.
 
 ## Nuxt
 
-If using as a plugin with [Nuxt](https://github.com/nuxt/nuxt.js) be sure to disable server side rendering in `nuxt.config.js`.
+If using as a plugin with [Nuxt](https://github.com/nuxt/nuxt.js), make sure to disable server side rendering in `nuxt.config.js`.
 
 ```javascript
 module.exports = {
