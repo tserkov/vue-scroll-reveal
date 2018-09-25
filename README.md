@@ -1,5 +1,5 @@
 # vue-scroll-reveal [![license](https://img.shields.io/github/license/tserkov/vue-scroll-reveal.svg)]()
-A Vue directive to wrap [@jlmake](https://github.com/jlmakes)'s excellent [ScrollReveal](https://github.com/jlmakes/scrollreveal) library.
+A Vue directive to wrap [@jlmakes](https://github.com/jlmakes)' excellent [ScrollReveal](https://github.com/scrollreveal/scrollreveal) library.
 
 The directive exposes `reset`, `nodesktop`, and `nomobile` as modifiers (ie. `v-scroll-reveal.reset.nomobile`).
 All other options can be passed to `Vue.use` or to individual elements as a value (ie. `v-scroll-reveal={ delay: 250 }`).
@@ -17,7 +17,7 @@ yarn add vue-scroll-reveal
 ```
 
 ## Use
-Remember! Any of the [ScrollReveal options](https://github.com/jlmakes/scrollreveal#22-the-starting-defaults) can be used!
+Remember! Any of the [ScrollReveal options](https://scrollrevealjs.org/api/defaults.html) can be used!
 
 ```javascript
 // In main.js
@@ -74,7 +74,7 @@ is preferred in order to keep with Vue principles.
 
 ## Nuxt
 
-If using as a plugin with [Nuxt](https://github.com/nuxt/nuxt.js), make sure to disable server side rendering in `nuxt.config.js`.
+If using as a plugin with [Nuxt](https://github.com/nuxt/nuxt.js), make sure to disable server-side rendering in `nuxt.config.js`.
 
 ```javascript
 module.exports = {
@@ -83,3 +83,9 @@ module.exports = {
   ],
 }
 ```
+
+## License
+
+While the code within this component (tserkov/vue-scroll-reveal) is [MIT-licensed](https://github.com/tserkov/vue-scroll-reveal/blob/master/LICENSE.md), ScrollReveal is [GPL3-licensed](https://github.com/scrollreveal/scrollreveal#license), and requires the purchase of a [Commercial License](https://scrollrevealjs.org/pricing/) if you want to use it in a closed-source project.
+
+For an explanation of why this component is licensed differently, see [#15](https://github.com/tserkov/vue-scroll-reveal/issues/21#issuecomment-424193121).
