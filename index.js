@@ -1,4 +1,4 @@
-const sr = require('scrollreveal')();
+const sr = require('scrollreveal').default();
 
 function generateOptions(defaultOptions, bindingValue, bindingModifiers) {
   const options = Object.assign({}, defaultOptions, bindingValue);
@@ -25,7 +25,7 @@ const VueScrollReveal = {
     Vue.directive('scroll-reveal', {
       inserted: (el, binding) => {
         const options = generateOptions(defaultOptions, binding.value, binding.modifiers);
-        
+
         if (typeof options.class === 'string') {
           el.classList.add(options.class);
           delete options.class;

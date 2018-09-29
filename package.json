@@ -1,6 +1,6 @@
 {
   "name": "vue-scroll-reveal",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "description": "A Vue directive to wrap @jlmake's excellent ScrollReveal library.",
   "keywords": [
     "vue",
