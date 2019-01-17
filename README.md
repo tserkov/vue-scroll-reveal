@@ -72,6 +72,8 @@ As of 1.0.4, the `isSupported()` and `sync()` methods are exposed via `Vue.$sr` 
 As of 1.0.7, the `reveal(target, config, interval, sync)` is exposed via `Vue.$sr` or `this.$sr`, though using the directive
 is preferred in order to keep with Vue principles.
 
+As of now, support all methods.
+
 ## Nuxt
 
 If using as a plugin with [Nuxt](https://github.com/nuxt/nuxt.js), make sure to disable server-side rendering in `nuxt.config.js`.

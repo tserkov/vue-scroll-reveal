@@ -1,4 +1,4 @@
-const sr = require('scrollreveal').default();
+import ScrollReveal from 'scrollreveal'
 
 function generateOptions(defaultOptions, bindingValue, bindingModifiers) {
   const options = Object.assign({}, defaultOptions, bindingValue);
@@ -31,34 +31,28 @@ const VueScrollReveal = {
           delete options.class;
         }
 
-        sr.reveal(el, options);
+        ScrollReveal().reveal(el, options);
       },
       update: (el, binding) => {
         if (binding.value != binding.oldValue) {
           const options = generateOptions(defaultOptions, binding.value, binding.modifiers);
 
-          sr.reveal(el, options);
+          ScrollReveal().reveal(el, options);
         }
       },
     });
 
-    const $sr = {
-      isSupported() {
-        return sr.isSupported();
-      },
-      sync() {
-        sr.sync();
-      },
-      reveal(target, config, interval, sync) {
-        const options = generateOptions(defaultOptions, config);
-
-        sr.reveal(target, config, interval, sync);
-      },
-    };
-
     Object.defineProperty(Vue.prototype, '$sr', {
       get() {
-        return $sr;
+        const instance = ScrollReveal()
+        return Object.assign({}, instance, {
+          reveal: new Proxy(instance.reveal, {
+            apply: (target, ctx, args) => {
+              const [el, config, interval, sync] = args
+              target.apply(ctx, [el, generateOptions(defaultOptions, config), interval, sync])
+            }
+          })
+        })
       },
     });
   },
