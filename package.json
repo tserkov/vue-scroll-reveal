@@ -1,17 +1,23 @@
 {
   "name": "vue-scroll-reveal",
-  "version": "1.0.11",
-  "description": "A Vue directive to wrap @jlmake's excellent ScrollReveal library.",
+  "version": "2.0.0",
+  "description": "A Vue 3 directive to wrap @jlmake's excellent ScrollReveal library.",
   "keywords": [
     "vue",
+    "vue3",
     "directive",
     "scroll",
     "reveal",
     "scrollreveal"
   ],
   "main": "dist/vue-scroll-reveal.js",
+  "browser": "dist/vue-scroll-reveal.esm.js",
+  "module": "dist/vue-scroll-reveal.esm.js",
+  "files": [
+    "dist"
+  ],
   "scripts": {
-    "build": "./node_modules/.bin/babel index.js --out-file dist/vue-scroll-reveal.js --presets=es2015 --plugins transform-object-assign"
+    "build": "rollup --config rollup.config.ts --configPlugin @rollup/plugin-typescript"
   },
   "repository": "https://github.com/tserkov/vue-scroll-reveal",
   "author": "tserkov <james.churchard@gmail.com>",
@@ -20,12 +26,15 @@
     "Hilmar (https://github.com/hilmarp)"
   ],
   "license": "MIT",
-  "devDependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-plugin-transform-object-assign": "^6.22.0",
-    "babel-preset-es2015": "^6.24.1"
+  "peerDependencies": {
+    "scrollreveal": "^4.0.0",
+    "vue": "^3.0.0"
   },
-  "dependencies": {
-    "scrollreveal": "^4.0.2"
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^22.0.2",
+    "@rollup/plugin-typescript": "^8.5.0",
+    "rollup": "^2.79.1",
+    "tslib": "^2.4.0",
+    "typescript": "^4.8.3"
   }
 }

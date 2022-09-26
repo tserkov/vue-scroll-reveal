@@ -1,75 +1,46 @@
-'use strict';
+(function (global, factory) {
+    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('scrollreveal')) :
+    typeof define === 'function' && define.amd ? define(['exports', 'scrollreveal'], factory) :
+    (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global["vue-scroll-reveal"] = {}, global.ScrollReveal));
+})(this, (function (exports, ScrollReveal) { 'use strict';
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+    function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
 
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+    var ScrollReveal__default = /*#__PURE__*/_interopDefaultLegacy(ScrollReveal);
 
-var sr = require('scrollreveal').default();
-
-function generateOptions(defaultOptions, bindingValue, bindingModifiers) {
-  var options = _extends({}, defaultOptions, bindingValue);
-
-  if (bindingModifiers) {
-    if (bindingModifiers.reset) {
-      options.reset = true;
-    }
-
-    if (bindingModifiers.nomobile) {
-      options.mobile = false;
-    }
-
-    if (bindingModifiers.nodesktop) {
-      options.desktop = false;
-    }
-  }
-
-  return options;
-}
-
-var VueScrollReveal = {
-  install: function install(Vue, defaultOptions) {
-    Vue.directive('scroll-reveal', {
-      inserted: function inserted(el, binding) {
-        var options = generateOptions(defaultOptions, binding.value, binding.modifiers);
-
+    function reveal(el, { value, modifiers }) {
+        const options = value || {};
+        if (modifiers) {
+            if (modifiers.reset) {
+                options.reset = true;
+            }
+            if (modifiers.nomobile) {
+                options.mobile = false;
+            }
+            if (modifiers.nodesktop) {
+                options.desktop = false;
+            }
+        }
         if (typeof options.class === 'string') {
-          el.classList.add(options.class);
-          delete options.class;
+            el.classList.add(options.class);
+            delete options.class;
         }
-
-        sr.reveal(el, options);
-      },
-      update: function update(el, binding) {
-        if (binding.value != binding.oldValue) {
-          var options = generateOptions(defaultOptions, binding.value, binding.modifiers);
-
-          sr.reveal(el, options);
+        ScrollReveal__default["default"]().reveal(el, options);
+    }
+    const vScrollReveal = {
+        mounted(el, binding) {
+            reveal(el, binding);
+        },
+        updated(el, binding) {
+            reveal(el, binding);
+        },
+        getSSRProps() {
+            return {};
         }
-      }
-    });
-
-    var $sr = {
-      isSupported: function isSupported() {
-        return sr.isSupported();
-      },
-      sync: function sync() {
-        sr.sync();
-      },
-      reveal: function reveal(target, config, interval, sync) {
-        var options = generateOptions(defaultOptions, config);
-
-        sr.reveal(target, config, interval, sync);
-      }
     };
 
-    Object.defineProperty(Vue.prototype, '$sr', {
-      get: function get() {
-        return $sr;
-      }
-    });
-  }
-};
+    exports.vScrollReveal = vScrollReveal;
 
-exports.default = VueScrollReveal;
+    Object.defineProperty(exports, '__esModule', { value: true });
+
+}));

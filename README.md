@@ -1,43 +1,31 @@
 # vue-scroll-reveal [![license](https://img.shields.io/github/license/tserkov/vue-scroll-reveal.svg)]()
-A Vue directive to wrap [@jlmakes](https://github.com/jlmakes)' excellent [ScrollReveal](https://github.com/scrollreveal/scrollreveal) library.
+A Vue 3 directive to wrap [@jlmakes](https://github.com/jlmakes)' excellent [ScrollReveal](https://github.com/scrollreveal/scrollreveal) library.
 
 The directive exposes `reset`, `nodesktop`, and `nomobile` as modifiers (ie. `v-scroll-reveal.reset.nomobile`).
-All other options can be passed to `Vue.use` or to individual elements as a value (ie. `v-scroll-reveal={ delay: 250 }`).
 
 ## Install
 
+ScrollReveal must be installed alongside this directive, since it is a peer dependency.
+
 ``` bash
 # npm
-npm install --save vue-scroll-reveal
+npm install --save vue-scroll-reveal@2 scrollreveal
 ```
 
 ``` bash
 # yarn
-yarn add vue-scroll-reveal
+yarn add vue-scroll-reveal@2 scrollreveal
 ```
 
 ## Use
-Remember! Any of the [ScrollReveal options](https://scrollrevealjs.org/api/defaults.html) can be used!
+Any of the [ScrollReveal options](https://scrollrevealjs.org/api/reveal.html) can be passed.
 
-```javascript
-// In main.js
-import VueScrollReveal from 'vue-scroll-reveal';
 
-// Using ScrollReveal's default configuration
-Vue.use(VueScrollReveal);
+```vue
+<script setup>
+import { vScrollReveal } from 'vue-scroll-reveal';
+</script>
 
-// OR specifying custom default options for all uses of the directive
-Vue.use(VueScrollReveal, {
-  class: 'v-scroll-reveal', // A CSS class applied to elements with the v-scroll-reveal directive; useful for animation overrides.
-  duration: 800,
-  scale: 1,
-  distance: '10px',
-  mobile: false
-});
-```
-
-```html
-<!-- In a component -->
 <template>
   <main>
 
@@ -67,21 +55,27 @@ Vue.use(VueScrollReveal, {
 
 ## Methods
 
-As of 1.0.4, the `isSupported()` and `sync()` methods are exposed via `Vue.$sr` or `this.$sr`.
-
-As of 1.0.7, the `reveal(target, config, interval, sync)` is exposed via `Vue.$sr` or `this.$sr`, though using the directive
-is preferred in order to keep with Vue principles.
-
-## Nuxt
-
-If using as a plugin with [Nuxt](https://github.com/nuxt/nuxt.js), make sure to disable server-side rendering in `nuxt.config.js`.
+As of vue-scroll-reveal@2.0.0, ScrollReveal() methods are no longer exposed. If you wish to use
+any, import and use them directly, like so:
 
 ```javascript
-module.exports = {
-  plugins: [
-    { src: '~/plugins/vue-scroll-reveal', ssr: false }
-  ],
-}
+import ScrollReveal from 'scrollreveal';
+
+ScrollReveal.isSupported(); // for example
+```
+
+## Nuxt 3
+
+Vue directives are [registered as a plugin](https://v3.nuxtjs.org/guide/directory-structure/plugins#vue-directives)
+by creating the following file (the filename is very important):
+```typescript
+// plugins/scrollReveal.client.ts
+
+import { vScrollReveal } from 'vue-scroll-reveal';
+
+export default defineNuxtPlugin((nuxtApp) => {
+  nuxtApp.vueApp.directive('scroll-reveal', vScrollReveal);
+});
 ```
 
 ## License

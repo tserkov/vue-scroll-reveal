@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "target": "es2016", 
+    "module": "esnext", 
+    "moduleResolution": "node",
+    "noEmitOnError": true,
+    "lib": ["dom", "es2017"],
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true,
+    "rootDir": "./"
+  },
+  "include": [
+    "./src/**/*.ts",
+    "./rollup.config.ts"
+  ]
+}
