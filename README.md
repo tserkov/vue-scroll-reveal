@@ -23,7 +23,15 @@ Any of the [ScrollReveal options](https://scrollrevealjs.org/api/reveal.html) ca
 
 ```vue
 <script setup>
+// if using default options
 import { vScrollReveal } from 'vue-scroll-reveal';
+
+// OR if using custom default options
+import { createScrollRevealDirective } from 'vue-scroll-reveal'; 
+const vScrollReveal = createScrollRevealDirective({
+    delay: 1000,
+    duration: 150,
+});
 </script>
 
 <template>
@@ -39,7 +47,7 @@ import { vScrollReveal } from 'vue-scroll-reveal';
     </section>
 
     <!-- Element-specific configuration options can be passed like this -->
-    <section v-scroll-reveal.reset="{ delay: 250 }">
+    <section v-scroll-reveal.reset="{ delay: 1500 }">
       <h1>Slightly late tada!</h1>
     </section>
 
@@ -71,12 +79,27 @@ by creating the following file (the filename is very important):
 ```typescript
 // plugins/scrollReveal.client.ts
 
-import { vScrollReveal } from 'vue-scroll-reveal';
+import { vScrollReveal } from 'vue-scroll-reveal'; // if using default options
+import { createScrollRevealDirective } from 'vue-scroll-reveal'; // OR if using custom default options
 
 export default defineNuxtPlugin((nuxtApp) => {
+  // if using default options
   nuxtApp.vueApp.directive('scroll-reveal', vScrollReveal);
+
+  // OR if using custom default options
+  nuxtApp.vueApp.directive('scroll-reveal', createScrollRevealDirective({
+    delay: 1000,
+    duration: 150,
+    reset: true,
+  }));
 });
 ```
+
+## Changelog
+
+v2.1.0: Add `createScrollRevealDirective` so default options can be applied. [(#40)](https://github.com/tserkov/vue-scroll-reveal/issues/40#issuecomment-1258741430)
+
+v2.0.0: Refactor in Typescript+Rollup for use in Vue 3 (& Nuxt 3).
 
 ## License
 

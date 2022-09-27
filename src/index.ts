@@ -1,7 +1,7 @@
-import type { Directive, DirectiveBinding } from 'vue';
+import type { Directive } from 'vue';
 import ScrollReveal from 'scrollreveal';
 
-function reveal(el: HTMLElement, { value, modifiers }: DirectiveBinding<any>) {
+function reveal(el: HTMLElement, value: any, modifiers: Record<string, boolean>) {
   const options = value || {};
 
   if (modifiers) {
@@ -27,15 +27,31 @@ function reveal(el: HTMLElement, { value, modifiers }: DirectiveBinding<any>) {
 }
 
 export const vScrollReveal: Directive<HTMLElement, any> = {
-  mounted(el, binding) {
-    reveal(el, binding)
+  mounted(el, { value, modifiers }) {
+    reveal(el, value, modifiers);
   },
 
-  updated(el, binding) {
-    reveal(el, binding);
+  updated(el, { value, modifiers }) {
+    reveal(el, value, modifiers);
   },
 
   getSSRProps() {
     return {};
   }
 };
+
+export function createScrollRevealDirective(defaultOptions): Directive<HTMLElement, any> {
+  return {
+    mounted(el, { value, modifiers }) {
+      reveal(el, Object.assign({}, defaultOptions, value), modifiers);
+    },
+
+    updated(el, { value, modifiers }) {
+      reveal(el, Object.assign({}, defaultOptions, value), modifiers);
+    },
+
+    getSSRProps() {
+      return {};
+    }
+  };
+}

@@ -8,7 +8,7 @@
 
     var ScrollReveal__default = /*#__PURE__*/_interopDefaultLegacy(ScrollReveal);
 
-    function reveal(el, { value, modifiers }) {
+    function reveal(el, value, modifiers) {
         const options = value || {};
         if (modifiers) {
             if (modifiers.reset) {
@@ -28,17 +28,31 @@
         ScrollReveal__default["default"]().reveal(el, options);
     }
     const vScrollReveal = {
-        mounted(el, binding) {
-            reveal(el, binding);
+        mounted(el, { value, modifiers }) {
+            reveal(el, value, modifiers);
         },
-        updated(el, binding) {
-            reveal(el, binding);
+        updated(el, { value, modifiers }) {
+            reveal(el, value, modifiers);
         },
         getSSRProps() {
             return {};
         }
     };
+    function createScrollRevealDirective(defaultOptions) {
+        return {
+            mounted(el, { value, modifiers }) {
+                reveal(el, Object.assign({}, defaultOptions, value), modifiers);
+            },
+            updated(el, { value, modifiers }) {
+                reveal(el, Object.assign({}, defaultOptions, value), modifiers);
+            },
+            getSSRProps() {
+                return {};
+            }
+        };
+    }
 
+    exports.createScrollRevealDirective = createScrollRevealDirective;
     exports.vScrollReveal = vScrollReveal;
 
     Object.defineProperty(exports, '__esModule', { value: true });
